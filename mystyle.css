@@ -1,0 +1,13 @@
+html, body {
+    background-color: rgb(208, 205, 130); /* หรือใช้รหัสสีที่คุณต้องการ เช่น #90EE90 */
+    margin: 0; /* ลบขอบเว็บ */
+    height: 100%; /* ให้พื้นหลังเต็มจอ */
+}
+
+.text-center {
+    color: #06014b;
+}
+
+textarea {
+    resize: none; 
+}
