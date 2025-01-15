@@ -6,46 +6,53 @@
     <title>โปรแกรมแสดงแม่สูตรคูณ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: 'Taviraj', sans-serif;
-            background-color: #f0f8ff;
+            font-family: 'Playfair Display', serif;
+            background-color: #fce4ec; /* สีชมพูอ่อน */
         }
         .container {
             max-width: 600px;
             margin-top: 50px;
+            position: relative;
         }
         .form-container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ff4081; /* สีชมพูสด */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         h1 {
-            font-size: 30px;
-            color: #0066cc;
+            font-size: 36px;
+            color: #ffffff;
             text-align: center;
             margin-bottom: 20px;
+            font-family: 'Sacramento', cursive;
         }
         .form-group label {
-            font-size: 18px;
-            color: #333333;
+            font-size: 20px;
+            color: #ffffff;
         }
         .form-group input {
-            font-size: 16px;
+            font-size: 18px;
+            border-radius: 10px;
         }
         .btn-submit {
-            background-color: #28a745;
+            background-color: #6200ea; /* สีม่วงดุดัน */
             color: white;
             font-size: 16px;
+            border-radius: 10px;
         }
         .btn-reset {
-            background-color: #6c757d;
+            background-color: #e53935; /* สีแดง */
             color: white;
             font-size: 16px;
+            border-radius: 10px;
         }
         .result {
             margin-top: 30px;
@@ -53,13 +60,25 @@
         }
         .result h2 {
             font-size: 24px;
-            color: #333333;
+            color: #ffffff;
+            font-family: 'Sacramento', cursive;
+        }
+        .flower-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/flower-power.png') repeat;
+            opacity: 0.1;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="form-container">
+            <div class="flower-decor"></div>
             <form method="post" action="{{url('/mycontroller')}}">
                 @csrf
                 <h1>โปรแกรมแสดงแม่สูตรคูณ</h1>
