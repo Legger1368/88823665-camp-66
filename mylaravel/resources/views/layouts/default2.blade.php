@@ -3,10 +3,10 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | Login Page v2</title>
+    <title>AdminLTE 4 | Register Page v2</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="AdminLTE 4 | Login Page v2" />
+    <meta name="title" content="AdminLTE 4 | Register Page v2" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -44,16 +44,14 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ url('public/css/adminlte.css') }}" />
 
-
     <!--end::Required Plugin(AdminLTE)-->
     @yield('style')
   </head>
   <!--end::Head-->
-
-
   <!--begin::Body-->
   <body class="bg-body-secondary">
     @yield('content')
+
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
@@ -99,5 +97,6 @@
     <!--end::Script-->
     @yield('scripts')
   </body>
+
   <!--end::Body-->
 </html>

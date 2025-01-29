@@ -1,4 +1,3 @@
-@extends('layouts.default')
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -1424,6 +1423,3 @@
   </body>
   <!--end::Body-->
 </html>
-
-
-
