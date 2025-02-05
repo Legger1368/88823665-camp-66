@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\endUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyController;
@@ -8,6 +10,56 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/login',[LoginController::class,'index']);
+
+Route::get('/home',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index']);
+Route::get('/register',[RegisterController::class,'index']);
+
+Route::get('/force-error', function () {
+    abort(500);
+});
+Route::post('/register',[RegisterController::class,'create']);
+
+Route::get('/users',[endUserController::class,'index']);
+Route::get('/user/{id}',[endUserController::class,'edit']);
+Route::put('/user/{id}',[endUserController::class,'edit_action']);
+Route::delete('/user',[endUserController::class,'delete']);
+
+
+/*
+
+//practice
+
+Route::get('/hometest',function(){
+    return view('hometest');
+});
+Route::get('blog',[AdminController::class,'index']);
+Route::get('about',[AdminController::class,'about']);
+
+
+Route::get('/about',function(){
+    return view('about');
+});
+
+Route::get('/blog',function(){
+
+    return view('blog');
+});
+Route::get('/blog/{name}',function($name){
+    return "<h1>บทความ ${name}</h1>";
+});
+
+
+Route::get('/admin/user/jirayu',function(){
+    return "<h1>ยินดีต้อนรับAdmin</h1>";
+})->name('login');
+*/
+
+
+
+
+/*
 Route::get('/mycontroller',
     [MyController::class, 'myFunction']);
 
@@ -28,14 +80,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login',[LoginController::class,'index']);
-Route::get('/register',[RegisterController::class,'index']);
-Route::get('/home',[HomeController::class,'index']);
-Route::get('/',[HomeController::class,'index']);
 
-Route::get('/force-error', function () {
-    abort(500);
-});
+
+
+*/
 
 
 
