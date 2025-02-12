@@ -50,6 +50,7 @@
   </head>
   <!--end::Head-->
   <!--begin::Body-->
+
   <body class="bg-body-secondary">
     <div class="layout-fixed sidebar-expand-lg">
         <div class="app-wrapper">
@@ -109,6 +110,8 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @yield('scripts')
   </body>
   <!--end::Body-->
