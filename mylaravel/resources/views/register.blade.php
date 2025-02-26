@@ -183,7 +183,7 @@
             event.preventDefault();
             Swal.fire({
                 title: "Good job!",
-                text: "You clicked athe button!",
+                text: "You clicked at the button!",
                 icon: "success"
             }).then(() => {
                 event.target.closest("form").submit();

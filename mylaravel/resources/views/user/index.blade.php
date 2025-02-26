@@ -1,6 +1,8 @@
 @extends('layouts.default_with_menu')
 
 @section('content')
+    <h1>{{ session('user')->name }}</h1>
+
     <div class="col-md-12">
         <div class="card mb-12">
             <div class="card-header">
@@ -31,7 +33,8 @@
                                 <a href="{{ url('/user/' . $user->id) }}">
                                     <button class="btn btn-warning">Edit</button>
                                 </a>
-                                <form action="{{ url('/user') }}" method="post" style="display: inline ;" onsubmit="return confirm_delete(event, this);" >
+                                <form action="{{ url('/user') }}" method="post" style="display: inline ;"
+                                    onsubmit="return confirm_delete(event, this);">
                                     @csrf
                                     @method('delete')
                                     <input type="hidden" name="id" value="{{ $user->id }}">
@@ -64,38 +67,36 @@
 @endsection
 
 @section('scripts')
-<script>
-    function confirm_delete(event, form) {
-        event.preventDefault(); // ป้องกันการส่งฟอร์มโดยอัตโนมัติ
-        console.log("confirm_delete function called"); // Debugging
+    <script>
+        function confirm_delete(event, form) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มโดยอัตโนมัติ
+            console.log("confirm_delete function called"); // Debugging
 
-        if (typeof Swal === "undefined") {
-            alert("SweetAlert2 is not loaded!");
+            if (typeof Swal === "undefined") {
+                alert("SweetAlert2 is not loaded!");
+                return false;
+            }
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel"
+            }).then((result) => {
+                console.log("Swal result:", result); // Debugging
+                if (result.isConfirmed) {
+                    console.log("User confirmed delete"); // ตรวจสอบว่า user กด Yes หรือไม่
+                    form.submit(); // ส่งฟอร์มหลังจากผู้ใช้กด "Yes"
+                } else {
+                    console.log("User cancelled delete");
+                }
+            });
+
             return false;
         }
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "Cancel"
-        }).then((result) => {
-            console.log("Swal result:", result); // Debugging
-            if (result.isConfirmed) {
-                console.log("User confirmed delete"); // ตรวจสอบว่า user กด Yes หรือไม่
-                form.submit(); // ส่งฟอร์มหลังจากผู้ใช้กด "Yes"
-            } else {
-                console.log("User cancelled delete");
-            }
-        });
-
-        return false;
-    }
-</script>
-
-
+    </script>
 @endsection

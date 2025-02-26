@@ -1,30 +1,338 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\endUserController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\endUserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Middleware\CheckLogin;
 
+Route::get('/login',
+    [LoginController::class, 'index']);
 
-Route::get('/login',[LoginController::class,'index']);
+Route::post('/login',
+    [LoginController::class, 'login']);
 
-Route::get('/home',[HomeController::class,'index']);
-Route::get('/',[HomeController::class,'index']);
-Route::get('/register',[RegisterController::class,'index']);
+Route::get('/logout', function(){
+    session()->forget('user');
+    session()->flush();
+    return redirect('/login');
+});
+
+Route::middleware([CheckLogin::class])->group(function() {
+    Route::get('/users', [endUserController::class, 'index']);
+
+    Route::get('/user/{id}', [endUserController::class, 'edit']);
+
+    Route::put('/user', [endUserController::class, 'edit_action']);
+
+    Route::delete('/user', [endUserController::class, 'delete']);
+
+    Route::get('/product', [ProductController::class, 'index']);
+
+    Route::post('/product', [ProductController::class, 'add_product']);
+});
+
+Route::get('/register',
+    [RegisterController::class, 'index']);
+
+Route::get('/home',
+    [HomeController::class, 'index'])->middleware([CheckLogin::class]);
+
+Route::get('/',
+    [HomeController::class, 'index'])->middleware([CheckLogin::class]);
+
+Route::get('/mycontroller',
+    [MyController::class, 'myFunction']);
+
+Route::post('/register',
+    [RegisterController::class, 'create']);
 
 Route::get('/force-error', function () {
     abort(500);
 });
-Route::post('/register',[RegisterController::class,'create']);
 
-Route::get('/users',[endUserController::class,'index']);
-Route::get('/user/{id}',[endUserController::class,'edit']);
-Route::put('/user/{id}',[endUserController::class,'edit_action']);
-Route::delete('/user',[endUserController::class,'delete']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -84,64 +392,6 @@ Route::get('/', function () {
 
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
